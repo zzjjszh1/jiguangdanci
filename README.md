@@ -26,7 +26,7 @@
 4. 印象笔记+微信
 
 ## 使用步骤
-1. 使用HttpCanary获取极光单词的API请求包,将其存入HttpCanary的download目录，目的是获取当前认证后的cookie，这些请求包可以是下列URL请求中的任何一个
+1. 使用HttpCanary获取极光单词的API请求包,将其存入HttpCanary的download目录，目的是获取当前认证后的cookie，这些请求包可以是下列URL请求中的任何一个  
 	1）收藏页的获取包（https://qiniu-api.jiguangdanci.com/user/today-cache-simple）  
 	2）今日已学单词列表的获取包(https://qiniu-api.jiguangdanci.com/user/word-collection-show)  
 	3）单词详情获取包(https://qiniu-api.jiguangdanci.com/user/showWordsDetails)  
