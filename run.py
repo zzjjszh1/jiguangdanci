@@ -33,7 +33,7 @@ def resolveRawHeader(data):
                 for j in par.split("&"):
                     if(j.startswith("ts")):
                         timestamp_str=datetime.fromtimestamp(int(j.split("=")[1])/1000,tz=tz)
-        elif i.startswith("cookie"):
+        elif (i.startswith("cookie") or i.startswith("Cookie")):
             temp = i[7:].split("&")
             for cookie_sector in temp:
                 cookie_spliter =  cookie_sector.find("=")
@@ -49,14 +49,17 @@ def resolveRawHeader(data):
             fieldvalue = field[1]
             if(fieldname == 'Host'):
                 host = fieldvalue
-            elif(fieldname == 'Content-Length'):
+            elif(fieldname == 'Content-Length' or fieldname == 'content-length'):
                 pass
             else:
                 headers[fieldname] = fieldvalue   
         else:
             body = i 
     url = "https://"+host+uri
-    headers["Accept-Encoding"]="gzip,deflate"
+    if("accept-encoding" in headers):
+        headers["accept-encoding"]="gzip,deflate"
+    else:
+        headers["Accept-Encoding"]="gzip,deflate"
     print(url)
     print(timestamp_str)
     return (url,headers,cookies,body)
